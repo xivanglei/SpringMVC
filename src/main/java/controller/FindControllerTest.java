@@ -10,6 +10,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import service.FruitsService;
+import validator.group.FruitsGroup1;
 
 import java.util.List;
 
@@ -20,7 +21,7 @@ public class FindControllerTest {
     private FruitsService fruitsService = new FruitsService();
 
     @RequestMapping(value = "queryFruitsByCondition")
-    public String queryFruitsByCondition(Model model, @Validated Fruits fruits,
+    public String queryFruitsByCondition(Model model, @Validated(value = FruitsGroup1.class) Fruits fruits,
                                          BindingResult bindingResult) {
         List<ObjectError> allErrors = null;
         if(bindingResult.hasErrors()) {
@@ -37,6 +38,7 @@ public class FindControllerTest {
             findList = fruitsService.queryFruitsByCondition(fruits);
         }
         model.addAttribute("fruitsList", findList);
+        model.addAttribute("allErrors", allErrors);
         return "/fruits/findFruits";
     }
 

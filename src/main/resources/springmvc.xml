@@ -47,7 +47,7 @@
         <property name="prefix" value="/WEB-INF/jsp"/>
         <property name="suffix" value=".jsp"/>
         <!--优先级，值越低优先级越高-->
-        <property name="order" value="100"/>
+        <property name="order" value="99"/>
     </bean>
 
     <bean class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
@@ -85,7 +85,8 @@
             </list>
         </property>
         <!--文件格式设置为“utf-8”-->
-        <property name="fileEncodings" value="utf-8"/>
+        <property name="defaultEncoding" value="UTF-8"/>
+        <!--<property name="fileEncodings" value="utf-8"/>-->
         <!--内容缓存时间设置为120s-->
         <property name="cacheSeconds" value="120"/>
     </bean>

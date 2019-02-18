@@ -1,15 +1,19 @@
 package model;
 
+import validator.group.FruitsGroup1;
+import validator.group.FruitsGroup2;
+
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 public class Fruits {
 
     private int id;
-    @Size(min=1,max=20,message = "{fruits.name.length.error}")
+    //后面groups表示分组，避免所有的类都校验
+    @Size(min=1,max=20,message = "{fruits.name.length.error}", groups = {FruitsGroup1.class})
     private String name;
     private double price;
-    @NotEmpty(message = "{fruits.producing_area.isEmpty}")
+    @NotEmpty(message = "{fruits.producing_area.isEmpty}", groups = {FruitsGroup2.class})
     private String producing_area;
 
     public Fruits() {

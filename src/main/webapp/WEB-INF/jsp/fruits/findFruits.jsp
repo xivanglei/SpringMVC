@@ -21,6 +21,12 @@
         <input type="submit" value="搜索">
     </form>
     <hr/>
+    <c:if test="${allErrors != null}">
+        <c:forEach items="${allErrors}" var="error">
+            <font color="red">${error.defaultMessage}</font>
+            <br>
+        </c:forEach>
+    </c:if>
     <h3>搜索结果</h3>
     <tr>
         <th>名称</th>
@@ -34,6 +40,7 @@
             <td>${fruit.producing_area }</td>
         </tr>
     </c:forEach>
+
 </table>
 </body>
 </html>
