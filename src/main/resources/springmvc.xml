@@ -106,4 +106,17 @@
     <mvc:annotation-driven conversion-service="conversionService" validator="validator"></mvc:annotation-driven>
     <!--使用扫描配置，对某一个包下的所有类进行扫描，找出所有使用@Controller注解的Handler控制器类-->
     <context:component-scan base-package="controller"></context:component-scan>
+    <!--全局异常处理器-->
+    <bean class="exception.UserExceptionResolver"></bean>
+    <!--全局拦截器-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <bean class="interceptor.HandlerInterceptorDemo1"/>
+        </mvc:interceptor>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <bean class="interceptor.HandlerInterceptorDemo2"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
 </beans>

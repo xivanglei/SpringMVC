@@ -96,13 +96,13 @@
       <artifactId>spring-test</artifactId>
       <version>${spring.version}</version>
     </dependency>
-    <!--freemarker-->
+    <!--freemarker(视图解析器，租用：返回一种Freemarker模板，负责将数据模型中的数据合并到模板中，从而生成标准输出（可以生成各种文本，包括HTML,XML,RTF,Java源代码等）)-->
     <dependency>
       <groupId>org.freemarker</groupId>
       <artifactId>freemarker</artifactId>
       <version>${freemarker.version}</version>
     </dependency>
-
+    <!--Bean validation校验,如果是Spring Validator校验，不用另外依赖-->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
