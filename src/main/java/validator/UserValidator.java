@@ -23,6 +23,16 @@ public class UserValidator implements Validator {
             errors.rejectValue("password", "Password.is.empty", "密码不能为空");
         } else if(user.getPassword().length() < 6) {
             errors.rejectValue("password", "length.too.short", "密码长度不得小于6位.");
+        } else if(!checkUser(user)) {
+            errors.rejectValue("password", "account.or.password.error", "账号密码错误");
+        }
+    }
+
+    private boolean checkUser(User user) {
+        if(StringUtil.equals(user.getUsername(),"zhangsan") && StringUtil.equals(user.getPassword(),"qwe123")) {
+            return true;
+        } else {
+            return false;
         }
     }
 }

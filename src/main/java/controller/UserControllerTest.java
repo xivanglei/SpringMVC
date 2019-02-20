@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import utils.StringUtil;
 import validator.UserValidator;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.io.IOException;
 import java.util.List;
 
 @Controller
@@ -30,8 +32,7 @@ public class UserControllerTest {
     }
 
     @RequestMapping("login")
-    public String login(Model model, @Valid User user, BindingResult result) throws Exception {
-
+    public String login(Model model, HttpServletRequest request, @Valid User user, BindingResult result) throws Exception {
         if (checkBlackList(user)) {
             throw new UserException("user.not.have.power");
         }
@@ -44,8 +45,17 @@ public class UserControllerTest {
             model.addAttribute("allErrors", allErrors);
             return "/user/login";
         } else {
+            request.getSession().setAttribute("user", user);
             return "/user/loginSuccess";
         }
+    }
+
+    @RequestMapping("logout")
+    public String logout(Model model, HttpServletRequest request) throws UserException, IOException {
+        if (request.getSession().getAttribute("user") != null) {
+            request.getSession().removeAttribute("user");
+        }
+        return "/user/login";
     }
 
     private boolean checkBlackList(User user) {

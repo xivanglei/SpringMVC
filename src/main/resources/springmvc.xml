@@ -47,7 +47,7 @@
         <property name="prefix" value="/WEB-INF/jsp"/>
         <property name="suffix" value=".jsp"/>
         <!--优先级，值越低优先级越高-->
-        <property name="order" value="99"/>
+        <property name="order" value="100"/>
     </bean>
 
     <bean class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
@@ -73,6 +73,13 @@
                 <prop key="whitespace_stripping">true</prop>
                 <prop key="tag_syntax">auto_detect</prop>
             </props>
+        </property>
+    </bean>
+    <!--multipart类型解析器-->
+    <bean class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!--设置上传文件的最大尺寸为5MB-->
+        <property name="maxUploadSize">
+            <value>5242880</value>
         </property>
     </bean>
     <!--。。。。。。。。。。。。视图解析器用例 end。。。。。。。。。。。。。。。-->
@@ -117,6 +124,10 @@
         <mvc:interceptor>
             <mvc:mapping path="/**"/>
             <bean class="interceptor.HandlerInterceptorDemo2"/>
+        </mvc:interceptor>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <bean class="interceptor.LoginInterceptor"/>
         </mvc:interceptor>
     </mvc:interceptors>
 </beans>
