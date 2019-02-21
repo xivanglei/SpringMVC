@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration 
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<settings>
+<!-- 		如果包装bean类使用驼峰命名规则，就要在这里开启驼峰命名规则映射 -->
+		<setting name="mapUnderscoreToCamelCase" value="true"/>
+<!-- 		打开延迟加载的开关 -->
+		<setting name="lazyLoadingEnabled" value="true"/>
+			<!-- 将积极加载改为消极加载（按需加载） -->
+		<setting name="aggressiveLazyLoading" value="false"/>
+		<setting name="cacheEnabled" value="true"/>
+	</settings>
+<!-- 	别名定义 -->
+	<typeAliases>
+		<package name="model"/>
+	</typeAliases>
+	<mappers>
+		<mapper resource="sqlmap/UserMapper.xml"/>
+		<package name="mapper"/>
+	</mappers>
+</configuration>
