@@ -7,8 +7,10 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import service.FruitsService;
 import validator.group.FruitsGroup1;
 
@@ -50,5 +52,12 @@ public class FindControllerTest {
             System.out.println("fids[" + i + "]=" + fids[i]);
         }
         return "/fruits/fruitsArray";
+    }
+
+    //实现RESTful风格
+    @RequestMapping(value = "queryFruit/{id}", method = {RequestMethod.GET})
+    public @ResponseBody Fruits getFruitById(Model model, @PathVariable("id") Integer fruitId) throws Exception {
+        Fruits fruit = fruitsService.queryFruitById(fruitId);
+        return fruit;
     }
 }

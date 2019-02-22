@@ -24,7 +24,7 @@ public class UserMapperTest {
 		sdf = new SimpleDateFormat("yyyy-MM-dd");
 	}
 
-//	@Test
+	@Test
 	public void testFindUserById() throws Exception {
 		UserQueryMapper userQueryMapper = (UserQueryMapper) applicationContext.getBean("userQueryMapper");
 		User user = userQueryMapper.findUserById(1);
@@ -72,7 +72,7 @@ public class UserMapperTest {
 		userMapper.updateByPrimaryKeySelective(user4);
 		System.out.println("5.更新id为" + user4.getId() + "的用户Email为：" + user4.getEmail());
 	}
-	@Test
+//	@Test
 	public void testDeleteUserById() {
 		userMapper.deleteByPrimaryKey(6);
 		User user5 = userMapper.selectByPrimaryKey(6);

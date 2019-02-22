@@ -14,7 +14,10 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>springmvc</servlet-name>
-    <url-pattern>*.action</url-pattern>
+    <!--过滤所有.action结尾的网址，交给Controller处理-->
+    <!--<url-pattern>*.action</url-pattern>-->
+    <!--如果要实现RESTful风格，就要过滤所有网址了-->
+    <url-pattern>/</url-pattern>
   </servlet-mapping>
 
   <!-- 字符过滤器，对传输的数据格式进行统一的转码，避免中文乱码 -->

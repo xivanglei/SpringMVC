@@ -22,4 +22,5 @@ public class FruitsControllerTest3 {
         modelAndView.setViewName("/fruits/fruitsList");
         return modelAndView;
     }
+
 }

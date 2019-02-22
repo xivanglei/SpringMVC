@@ -72,13 +72,13 @@
   <sql id="Base_Column_List">
     id, username, password, gender, email, province, city, birthday
   </sql>
-  <select id="selectByExample" parameterType="cn.com.sm.po.UserExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="model.UserExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from user
+    from mybatis_test..user
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -87,31 +87,31 @@
     </if>
   </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
+    select
     <include refid="Base_Column_List" />
-    from user
+    from mybatis_test..user
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from user
+    delete from mybatis_test..user
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="cn.com.sm.po.UserExample">
-    delete from user
+  <delete id="deleteByExample" parameterType="model.UserExample">
+    delete from mybatis_test..user
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="cn.com.sm.po.User">
-    insert into user (id, username, password, 
-      gender, email, province, 
+  <insert id="insert" parameterType="model.User">
+    insert into mybatis_test..user (id, username, password,
+      gender, email, province,
       city, birthday)
-    values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
-      #{gender,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{province,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},
+      #{gender,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{province,jdbcType=VARCHAR},
       #{city,jdbcType=VARCHAR}, #{birthday,jdbcType=DATE})
   </insert>
-  <insert id="insertSelective" parameterType="cn.com.sm.po.User">
-    insert into user
+  <insert id="insertSelective" parameterType="model.User">
+    insert into mybatis_test..user
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         id,
@@ -165,14 +165,14 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="cn.com.sm.po.UserExample" resultType="java.lang.Long">
-    select count(*) from user
+  <select id="countByExample" parameterType="model.UserExample" resultType="java.lang.Long">
+    select count(*) from mybatis_test..user
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update user
+    update mybatis_test..user
     <set>
       <if test="record.id != null">
         id = #{record.id,jdbcType=INTEGER},
@@ -204,21 +204,21 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update user
+    update mybatis_test..user
     set id = #{record.id,jdbcType=INTEGER},
-      username = #{record.username,jdbcType=VARCHAR},
-      password = #{record.password,jdbcType=VARCHAR},
-      gender = #{record.gender,jdbcType=VARCHAR},
-      email = #{record.email,jdbcType=VARCHAR},
-      province = #{record.province,jdbcType=VARCHAR},
-      city = #{record.city,jdbcType=VARCHAR},
-      birthday = #{record.birthday,jdbcType=DATE}
+    username = #{record.username,jdbcType=VARCHAR},
+    password = #{record.password,jdbcType=VARCHAR},
+    gender = #{record.gender,jdbcType=VARCHAR},
+    email = #{record.email,jdbcType=VARCHAR},
+    province = #{record.province,jdbcType=VARCHAR},
+    city = #{record.city,jdbcType=VARCHAR},
+    birthday = #{record.birthday,jdbcType=DATE}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="cn.com.sm.po.User">
-    update user
+  <update id="updateByPrimaryKeySelective" parameterType="model.User">
+    update mybatis_test..user
     <set>
       <if test="username != null">
         username = #{username,jdbcType=VARCHAR},
@@ -244,8 +244,8 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="cn.com.sm.po.User">
-    update user
+  <update id="updateByPrimaryKey" parameterType="model.User">
+    update mybatis_test..user
     set username = #{username,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
       gender = #{gender,jdbcType=VARCHAR},

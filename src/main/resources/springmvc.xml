@@ -76,7 +76,7 @@
         </property>
     </bean>
     <!--multipart类型解析器-->
-    <bean class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
         <!--设置上传文件的最大尺寸为5MB-->
         <property name="maxUploadSize">
             <value>5242880</value>
@@ -125,9 +125,16 @@
             <mvc:mapping path="/**"/>
             <bean class="interceptor.HandlerInterceptorDemo2"/>
         </mvc:interceptor>
-        <mvc:interceptor>
-            <mvc:mapping path="/**"/>
-            <bean class="interceptor.LoginInterceptor"/>
-        </mvc:interceptor>
+        <!--登录校验-->
+        <!--<mvc:interceptor>-->
+            <!--<mvc:mapping path="/**"/>-->
+            <!--<bean class="interceptor.LoginInterceptor"/>-->
+        <!--</mvc:interceptor>-->
     </mvc:interceptors>
+
+    <!--如果使用RESTful风格，而过滤了所有的网址，会连同静态网址一起过滤,下面有两个解决办法-->
+    <!--方案一：声明资源文件夹，可以声明多个-->
+    <mvc:resources mapping="/image/**" location="/image/"/>
+    <!--方案二：没声明过的请求交给Servlet处理，不是静态资源再继续让DispatcherServlet处理-->
+    <mvc:default-servlet-handler/>
 </beans>

@@ -16,8 +16,8 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	<typeAliases>
 		<package name="model"/>
 	</typeAliases>
-	<mappers>
-		<mapper resource="sqlmap/UserMapper.xml"/>
-		<package name="mapper"/>
-	</mappers>
+	<!--<mappers>-->
+		<!--<mapper resource="sqlmap/UserMapper.xml"/>-->
+		<!--<package name="mapper"/>-->
+	<!--</mappers>-->
 </configuration>
