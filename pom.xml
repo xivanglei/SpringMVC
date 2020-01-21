@@ -19,7 +19,7 @@
     <maven.compiler.source>1.7</maven.compiler.source>
     <maven.compiler.target>1.7</maven.compiler.target>
     <!-- spring版本号 -->
-    <spring.version>5.1.4.RELEASE</spring.version>
+    <spring.version>5.2.3.RELEASE</spring.version>
     <!--freemarker版本-->
     <freemarker.version>2.3.23</freemarker.version>
     <!-- mybatis版本号 -->
