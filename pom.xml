@@ -34,7 +34,7 @@
     <!--Junit单元测试版本号 -->
     <junit.version>4.11</junit.version>
     <!--Java连接MySQL 版本号-->
-    <mysql-connector-java.version>8.0.13</mysql-connector-java.version>
+    <mysql-connector-java.version>8.0.16</mysql-connector-java.version>
     <!--commons-dbcp版本号-->
     <commons-dbcp.version>1.4</commons-dbcp.version>
     <!--jstl版本号-->
